@@ -1,0 +1,15 @@
+Arrêt CORUM T1 Ligne 1 Destination MOSSON Temps d'attente 05 min 00 sec
+Arrêt CORUM T1 Ligne 1 Destination MOSSON Temps d'attente 20 min 04 sec
+Arrêt CORUM T1 Ligne 1 Destination MOSSON Temps d'attente 36 min 24 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 12 min 04 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 27 min 07 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 41 min 24 sec
+Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 09 min 47 sec
+Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 13 min 06 sec
+Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 30 min 24 sec
+Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 31 min 24 sec
+Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 50 min 24 sec
+Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 51 min 24 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 12 min 04 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 27 min 07 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 41 min 24 sec
