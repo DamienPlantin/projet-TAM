@@ -5,7 +5,7 @@ import urllib.request
 from time import *
 import logging
 
-logger = logging.getLogger('RandomGroup')
+logger = logging.getLogger('Transport')
 logger.setLevel(logging.DEBUG)
 
 # créer un gestionnaire de console et niveau de réglage pour le débogage
@@ -133,7 +133,7 @@ def next_passage(cursor):
     for contact in cursor.fetchall():
         if args.fichier:
             passage = str(f"Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d'attente {temps_arrive(contact[3])}\n")
-            sys.stdout = open('test.txt', 'a', encoding='utf-8')
+            sys.stdout = open('Terminal.txt', 'a', encoding='utf-8')
             sys.stdout.write(passage)
         else:
             print(f"Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d'attente {temps_arrive(contact[3])}")
@@ -182,7 +182,7 @@ def time_wait(cursor):
     for contact in cursor.fetchall():
         if args.fichier:
             passage = str(f"Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d'attente {temps_arrive(contact[3])}\n")
-            sys.stdout = open('test.txt', 'a', encoding='utf-8')
+            sys.stdout = open('Terminal.txt', 'a', encoding='utf-8')
             sys.stdout.write(passage)            
         else:
             print(f"Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d'attente {temps_arrive(contact[3])}")
