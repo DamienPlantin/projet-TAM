@@ -6,6 +6,7 @@ Pour utiliser ce programme, le client doit avoir installer python au préalable.
 Auteurs: Damien, Yoan, Juljan. /ORGANISME SIMPLON/
 
 Ce script respecte les conventions PEP8 et PEP257.
+Une documentation est disponible au format html
 
 Les principales fonctionnalités de se programme sont:
 
