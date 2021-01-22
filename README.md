@@ -11,7 +11,7 @@ Les principales fonctionnalités de se programme sont:
 
 -Télécharger le fichier.scv de la tam en database
 -Update la database si le fichier est déjà telecharger
--Afficher tous les prochains passage des transports à la station toutes lignes et destinations confondus
+-Afficher tous les prochains passages des transports à la station toutes lignes et destinations confondus
 -Afficher le délai d'attente du prochain transport avec les paramètres entrés avec les arguments dans la ligne de commande
 -Enregistrer les résultuats de vos recherches dans un fichier.txt avec un argument
 
