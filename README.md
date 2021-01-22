@@ -1,16 +1,16 @@
 # Projet-TAM
 
-Ce programme permet d'utiliser plusieurs fonctions dans une ligne de commande pour interagir avec le fichier.csv des horaires de la tam.
-Pour utiliser ce programme, le client doit avoir installer python au préalable.
+Ce programme permet d'utiliser plusieurs fonctions dans une ligne de commande pour interagir avec le fichier.csv des horaires de la Tam.
+Pour utiliser ce programme, le client doit avoir installé python au préalable.
 
 Auteurs: Damien, Yoan, Juljan. /ORGANISME SIMPLON/
 
-Ce script respecte les conventions PEP8 et PEP257.
-Une documentation est disponible au format html
+Ce script respecte les conventions PEP8 et PEP257,
+Une documentation est disponible au format html.
 
-Les principales fonctionnalités de se programme sont:
+Les principales fonctionnalités de ce programme sont:
 
--Télécharger le fichier.scv de la tam en database
+-Télécharger le fichier.csv de la tam en database
 -Update la database si le fichier est déjà telecharger
 -Afficher tous les prochains passages des transports à la station toutes lignes et destinations confondus
 -Afficher le délai d'attente du prochain transport avec les paramètres entrés avec les arguments dans la ligne de commande
