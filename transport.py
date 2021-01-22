@@ -24,19 +24,22 @@ logger.addHandler(ch)
 
 
 def temps_arrive(horaire):
-    """Docstring de la fonction temps_arrive :
+  
+
+"""Docstring of the function temps_arrive :
     
-    strftime : permet de convertir la variable horaire donnée en seconde et la sortir en minutes et secondes 
-    """
+    strftime : allows to convert the variable time, which is in seconds , in minutes and seconds 
+"""
     logger.debug("Appel de la fonction temps_arrive()")
     logger.debug("Conversion de %s sec en %s", horaire, strftime('%M min %S sec', gmtime(horaire)))
     return strftime('%M min %S sec', gmtime(horaire))
 
 
 def download():
-    """Docstring de la fonction download :
     
-    urllib.request.urlretrieve : permet de télécharger le fichier donné dans le lien et de le renommer
+    """Docstring of the function download : 
+
+    urllib.request.urlretrieve : allows to upload the given file in the link and to rename it
     """
     logger.debug("Appel de la fonction download")
     logger.debug("Tentative de téléchargement du fichier .csv à l'@ https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv")
@@ -47,32 +50,34 @@ def download():
 
 
 def clear_rows(cursor):
-    """Docstring de la fonction clear_rows :
+   
+    """Docstring of the function clear_rows :
 
-    Cette fonction permet de supprimer le tableau présent dans la table 'infoarret'
-    
-    cursor : commande SQL possible avec la librairie sqlite3 de python
-    permet de se placer dans la table 'infoarret'
+    This function allows to delete the table which is present in the main table 'infoarret'
+    cursor : comande SQL with the library sqlite 3 of python 
+    allows to place in the table 'infoarret'
     """
     cursor.execute("""DELETE FROM infoarret""") # Dans la parenthèse on peut faire une requête SQL
 
 
 def insert_csv_row(csv_row, cursor):
-    """Docstring de la fonction insert_csv_row
     
-    Cette fonction permet d'inserer les informations du fichier csv dans la table 'infoarret'
+    """Docstring of the function insert_csv_row
+
+    This function allows to insert the informations of the file csv in the table 'infoarret'
     """
     cursor.execute("""INSERT INTO infoarret VALUES (?,?,?,?,?,?,?,?,?,?,?) """,
                    csv_row.strip().split(";"))
 
 
 def load_csv(path, cursor):
-    """Docstring de la fonction load_csv
     
-    Cette fonction permet de charger le fichier csv dans la table 'infoarret'
-    avec la fonction insert_csv_row
+    """Docstring of the function load_csv
 
-    path : chemin d'accès et/ou fichier csv
+    This function allows to upload the file csv in the table 'infoarret'
+    through the function insert_csv_row
+
+    path :track  of the access and/or the file csv
     """
     logger.debug("Appel de la fonction load_csv()")
     logger.debug("Tentative d'ouverture du fichier %s", path)
@@ -89,10 +94,10 @@ def load_csv(path, cursor):
 
 
 def remove_table(cursor):
-    """Docstring de la fonction remove_table 
-    
-    Cette fonction permet de supprimer la table 'infoarret' s'il y a une table de présente
-    dans la base de donnée
+  
+    """Docstring of the function remove_table
+
+    This function allows to delete the table 'infoarret' if one  existe in the data base
     """
     logger.debug("Appel de la fonction remove_table()")
     cursor.execute("""DROP TABLE IF EXISTS infoarret""")
@@ -100,10 +105,10 @@ def remove_table(cursor):
 
 
 def create_schema(cursor):
-    """Docstring de la fonction create_schema
     
-    Cette fonction permet de créer une table 'infoarret' si elle n'existe pas et
-    de lui renseigner les colonnes avec leurs types
+     """Docstring of the function create_schema
+
+     This function allows to create a table 'infoarret' if it doesn't existe and to allocate the colonnes with their  type 
      """
     logger.debug("Appel de la fonction create_schema()")
     cursor.execute("""CREATE TABLE IF NOT EXISTS "infoarret" (
@@ -123,10 +128,11 @@ def create_schema(cursor):
 
 
 def next_passage(cursor):
-    """Docstring de la fonction next_passage
-    
-    cette fonction permet de renseigner sur les prochains passages prévu à un arrêt donné
-    """
+  
+    """Docstring of the function next_passage 
+
+    This function allows to informe about the next planned arrives in a given station
+    """ 
     logger.debug("Appel de la fonction next_passage()")
     logger.debug("Selection des colonnes pour le résultat de la recherche")
     cursor.execute('SELECT stop_name, route_short_name, trip_headsign, delay_sec FROM infoarret WHERE stop_name = ?', (args.station,))
@@ -141,10 +147,11 @@ def next_passage(cursor):
 
 
 def next_wait(c):
-    """Docstring de la fonction next_wait
     
-    Cette fonction permet de sélectionner soit la fonction next_passage si l'action est next,
-    soit time_wait si l'action est wait
+    """Docstring of the function next_wait
+
+    This function allows to select the function next_passage if the action is next ,
+    or time_wait if the next action is wait 
     """
     logger.debug("Appel de la fonction next_wait()")
     if not args.action:
@@ -173,9 +180,10 @@ def next_wait(c):
 
 
 def time_wait(cursor):
-    """Docstring de la fonction time_wait
     
-    Cette fonction permet d'afficher le temps d'attente à un arrêt, pour une ligne vers une destination
+    """Docstring of the function time_wait
+
+    This function allows to pin up(display) the time waiting in a station ,for a line to a destination 
     """
     logger.debug("Appel de la fonction time_wait()")
     cursor.execute(f"SELECT stop_name, route_short_name, trip_headsign, delay_sec FROM infoarret WHERE stop_name = ? AND trip_headsign = ? AND route_short_name = ?", (args.station, args.destination, args.ligne))
