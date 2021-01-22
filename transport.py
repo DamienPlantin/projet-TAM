@@ -205,7 +205,7 @@ parser.add_argument("-l", "--ligne", help="time to wait")
 parser.add_argument("action", nargs='?', help="wait time or next passages")
 parser.add_argument("-f", "--fichier", action='store_true', help='test')
 
-# args = parser.parse_args()
+args = parser.parse_args()
 
 logger.debug("********************** Début du script **********************")
 
