@@ -203,11 +203,15 @@ args = parser.parse_args()
 logger.debug("************************************** Début du script ***********************************************************")
 
 def main():
-    """Docstring de la fonction main
-    
-    Cette fonction permet de se connecter à la base de donnée, de supprimer la table si elle existe.
-    De plus, elle permet également de mettre à jour la base de donnée soit avec un fichier csv déjà
-    présent sur le périphérique, soit en téléchargent directement le fichier csv depuis le site de la TAM
+ 
+
+    """
+    Docstring of the function main
+
+    This function allows to connect with the data base ,delete the table if it  existe.
+    This function  allows also  to update the data base with a file csv which is present in the device ,
+     also it makes the uploading of this file csv directly from the site of TAM
+
     """
     conn = sqlite3.connect("tam.db") # Connection entre sqlite et notre fichier db
     logger.debug("Connection/création du fichier tam.db pour la base de donnée")
