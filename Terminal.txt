@@ -1,15 +1,21 @@
-Arrêt CORUM T1 Ligne 1 Destination MOSSON Temps d'attente 05 min 00 sec
-Arrêt CORUM T1 Ligne 1 Destination MOSSON Temps d'attente 20 min 04 sec
-Arrêt CORUM T1 Ligne 1 Destination MOSSON Temps d'attente 36 min 24 sec
-Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 12 min 04 sec
-Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 27 min 07 sec
-Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 41 min 24 sec
-Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 09 min 47 sec
-Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 13 min 06 sec
-Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 30 min 24 sec
-Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 31 min 24 sec
-Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 50 min 24 sec
-Arrêt CORUM T1 Ligne 4 Destination GARCIA LORCA Temps d'attente 51 min 24 sec
-Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 12 min 04 sec
-Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 27 min 07 sec
-Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 41 min 24 sec
+Arrêt SAINT-ELOI Ligne 1 Destination MOSSON Temps d'attente 01 min 57 sec
+Arrêt SAINT-ELOI Ligne 1 Destination MOSSON Temps d'attente 08 min 43 sec
+Arrêt SAINT-ELOI Ligne 1 Destination MOSSON Temps d'attente 13 min 56 sec
+Arrêt SAINT-ELOI Ligne 1 Destination ODYSSEUM Temps d'attente 00 min 59 sec
+Arrêt SAINT-ELOI Ligne 1 Destination ODYSSEUM Temps d'attente 08 min 46 sec
+Arrêt SAINT-ELOI Ligne 1 Destination ODYSSEUM Temps d'attente 11 min 26 sec
+Arrêt SAINT-ELOI Ligne 10 Destination AIGUELONGUE Temps d'attente 05 min 44 sec
+Arrêt SAINT-ELOI Ligne 10 Destination AIGUELONGUE Temps d'attente 27 min 33 sec
+Arrêt SAINT-ELOI Ligne 10 Destination AIGUELONGUE Temps d'attente 52 min 34 sec
+Arrêt SAINT-ELOI Ligne 10 Destination CELLENEUVE Temps d'attente 15 min 34 sec
+Arrêt SAINT-ELOI Ligne 10 Destination CELLENEUVE Temps d'attente 40 min 34 sec
+Arrêt SAINT-ELOI Ligne 10 Destination CELLENEUVE Temps d'attente 05 min 34 sec
+Arrêt SAINT-ELOI Ligne 15 Destination ODYSSEUM Temps d'attente 02 min 38 sec
+Arrêt SAINT-ELOI Ligne 15 Destination ODYSSEUM Temps d'attente 24 min 45 sec
+Arrêt SAINT-ELOI Ligne 15 Destination ODYSSEUM Temps d'attente 41 min 32 sec
+Arrêt SAINT-ELOI Ligne 15 Destination SABINES Temps d'attente 13 min 49 sec
+Arrêt SAINT-ELOI Ligne 15 Destination SABINES Temps d'attente 26 min 31 sec
+Arrêt SAINT-ELOI Ligne 15 Destination SABINES Temps d'attente 46 min 31 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 03 min 37 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 09 min 59 sec
+Arrêt CORUM T1 Ligne 1 Destination ODYSSEUM Temps d'attente 17 min 46 sec

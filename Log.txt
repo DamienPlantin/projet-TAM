@@ -1,69 +1,82 @@
-21/01/2021 11:00:27 PM - Transport - DEBUG - ************************************** Début du script ***********************************************************
-21/01/2021 11:00:27 PM - Transport - DEBUG - Connection/création du fichier tam.db pour la base de donnée
-21/01/2021 11:00:27 PM - Transport - DEBUG - Positionnement d'un curseur dans la base de donnée
-21/01/2021 11:00:27 PM - Transport - DEBUG - Appel de la fonction remove_table()
-21/01/2021 11:00:27 PM - Transport - DEBUG - Si une table 'infoarret' est présente dans la base de donnée, suppression de cette table
-21/01/2021 11:00:27 PM - Transport - DEBUG - Appel de la fonction create_schema()
-21/01/2021 11:00:27 PM - Transport - DEBUG - Création de la table 'infoarret'
-21/01/2021 11:00:27 PM - Transport - DEBUG - Appel de la fonction download
-21/01/2021 11:00:27 PM - Transport - DEBUG - Tentative de téléchargement du fichier .csv à l'@ https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv
-21/01/2021 11:00:28 PM - Transport - DEBUG - Téléchagement réussi, nom du fichier : TpsReel.csv
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction load_csv()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Tentative d'ouverture du fichier TpsReel.csv
-21/01/2021 11:00:28 PM - Transport - DEBUG - Ouverture du fichier et lecture de la première ligne réussi
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction insert_csv_row() pour chaque ligne du fichier csv
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction next_wait()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Utilisation de l'argument 'next'
-21/01/2021 11:00:28 PM - Transport - DEBUG - Utilisation de l'argument -s CORUM T1 pour la station
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction next_passage()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Selection des colonnes pour le résultat de la recherche
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 300 sec en 05 min 00 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 1204 sec en 20 min 04 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 2184 sec en 36 min 24 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 724 sec en 12 min 04 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 1627 sec en 27 min 07 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 2484 sec en 41 min 24 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 587 sec en 09 min 47 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 786 sec en 13 min 06 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 1824 sec en 30 min 24 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 1884 sec en 31 min 24 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 3024 sec en 50 min 24 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:28 PM - Transport - DEBUG - Conversion de 3084 sec en 51 min 24 sec
-21/01/2021 11:00:28 PM - Transport - DEBUG - ************************************** Fin du script *****************************************************************
-21/01/2021 11:00:30 PM - Transport - DEBUG - ************************************** Début du script ***********************************************************
-21/01/2021 11:00:30 PM - Transport - DEBUG - Connection/création du fichier tam.db pour la base de donnée
-21/01/2021 11:00:30 PM - Transport - DEBUG - Positionnement d'un curseur dans la base de donnée
-21/01/2021 11:00:30 PM - Transport - DEBUG - Appel de la fonction remove_table()
-21/01/2021 11:00:30 PM - Transport - DEBUG - Si une table 'infoarret' est présente dans la base de donnée, suppression de cette table
-21/01/2021 11:00:30 PM - Transport - DEBUG - Appel de la fonction create_schema()
-21/01/2021 11:00:30 PM - Transport - DEBUG - Création de la table 'infoarret'
-21/01/2021 11:00:30 PM - Transport - DEBUG - Appel de la fonction download
-21/01/2021 11:00:30 PM - Transport - DEBUG - Tentative de téléchargement du fichier .csv à l'@ https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv
-21/01/2021 11:00:30 PM - Transport - DEBUG - Téléchagement réussi, nom du fichier : TpsReel.csv
-21/01/2021 11:00:30 PM - Transport - DEBUG - Appel de la fonction load_csv()
-21/01/2021 11:00:30 PM - Transport - DEBUG - Tentative d'ouverture du fichier TpsReel.csv
-21/01/2021 11:00:31 PM - Transport - DEBUG - Ouverture du fichier et lecture de la première ligne réussi
-21/01/2021 11:00:31 PM - Transport - DEBUG - Appel de la fonction insert_csv_row() pour chaque ligne du fichier csv
-21/01/2021 11:00:31 PM - Transport - DEBUG - Appel de la fonction next_wait()
-21/01/2021 11:00:31 PM - Transport - DEBUG - Utilisation de l'argument 'wait'
-21/01/2021 11:00:31 PM - Transport - DEBUG - Utilisation des arguments -s CORUM T1 -d ODYSSEUM -l 1
-21/01/2021 11:00:31 PM - Transport - DEBUG - Appel de la fonction time_wait()
-21/01/2021 11:00:31 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:31 PM - Transport - DEBUG - Conversion de 724 sec en 12 min 04 sec
-21/01/2021 11:00:31 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:31 PM - Transport - DEBUG - Conversion de 1627 sec en 27 min 07 sec
-21/01/2021 11:00:31 PM - Transport - DEBUG - Appel de la fonction temps_arrive()
-21/01/2021 11:00:31 PM - Transport - DEBUG - Conversion de 2484 sec en 41 min 24 sec
-21/01/2021 11:00:31 PM - Transport - DEBUG - ************************************** Fin du script *****************************************************************
+22/01/2021 11:54:58 AM - Transport - DEBUG - ********************** Début du script **********************
+22/01/2021 11:54:58 AM - Transport - DEBUG - Connection/création du fichier tam.db pour la base de donnée
+22/01/2021 11:54:58 AM - Transport - DEBUG - Positionnement d'un curseur dans la base de donnée
+22/01/2021 11:54:58 AM - Transport - DEBUG - Appel de la fonction remove_table()
+22/01/2021 11:54:58 AM - Transport - DEBUG - Si une table 'infoarret' est présente dans la base de donnée, suppression de cette table
+22/01/2021 11:54:58 AM - Transport - DEBUG - Appel de la fonction create_schema()
+22/01/2021 11:54:58 AM - Transport - DEBUG - Création de la table 'infoarret'
+22/01/2021 11:54:58 AM - Transport - DEBUG - Appel de la fonction download
+22/01/2021 11:54:58 AM - Transport - DEBUG - Tentative de téléchargement du fichier .csv à l'@ https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv
+22/01/2021 11:54:59 AM - Transport - DEBUG - Téléchagement réussi, nom du fichier : TpsReel.csv
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction load_csv()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Tentative d'ouverture du fichier TpsReel.csv
+22/01/2021 11:54:59 AM - Transport - DEBUG - Ouverture et lecture de la première ligne du fichier réussi
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction insert_csv_row() pour chaque ligne du fichier csv
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction next_wait()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Utilisation de l'argument 'next'
+22/01/2021 11:54:59 AM - Transport - DEBUG - Utilisation de l'argument -s SAINT-ELOI pour la station
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction next_passage()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Selection des colonnes pour le résultat de la recherche
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 117 sec en 01 min 57 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 523 sec en 08 min 43 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 836 sec en 13 min 56 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 59 sec en 00 min 59 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 526 sec en 08 min 46 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 686 sec en 11 min 26 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 344 sec en 05 min 44 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 1653 sec en 27 min 33 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 3154 sec en 52 min 34 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 934 sec en 15 min 34 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 2434 sec en 40 min 34 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 3934 sec en 05 min 34 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 158 sec en 02 min 38 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 1485 sec en 24 min 45 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 2492 sec en 41 min 32 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 829 sec en 13 min 49 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 1591 sec en 26 min 31 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:54:59 AM - Transport - DEBUG - Conversion de 2791 sec en 46 min 31 sec
+22/01/2021 11:54:59 AM - Transport - DEBUG - ********************** Fin du script **********************
+22/01/2021 11:55:08 AM - Transport - DEBUG - ********************** Début du script **********************
+22/01/2021 11:55:08 AM - Transport - DEBUG - Connection/création du fichier tam.db pour la base de donnée
+22/01/2021 11:55:08 AM - Transport - DEBUG - Positionnement d'un curseur dans la base de donnée
+22/01/2021 11:55:08 AM - Transport - DEBUG - Appel de la fonction remove_table()
+22/01/2021 11:55:08 AM - Transport - DEBUG - Si une table 'infoarret' est présente dans la base de donnée, suppression de cette table
+22/01/2021 11:55:08 AM - Transport - DEBUG - Appel de la fonction create_schema()
+22/01/2021 11:55:08 AM - Transport - DEBUG - Création de la table 'infoarret'
+22/01/2021 11:55:08 AM - Transport - DEBUG - Appel de la fonction download
+22/01/2021 11:55:08 AM - Transport - DEBUG - Tentative de téléchargement du fichier .csv à l'@ https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv
+22/01/2021 11:55:09 AM - Transport - DEBUG - Téléchagement réussi, nom du fichier : TpsReel.csv
+22/01/2021 11:55:09 AM - Transport - DEBUG - Appel de la fonction load_csv()
+22/01/2021 11:55:09 AM - Transport - DEBUG - Tentative d'ouverture du fichier TpsReel.csv
+22/01/2021 11:55:09 AM - Transport - DEBUG - Ouverture et lecture de la première ligne du fichier réussi
+22/01/2021 11:55:09 AM - Transport - DEBUG - Appel de la fonction insert_csv_row() pour chaque ligne du fichier csv
+22/01/2021 11:55:09 AM - Transport - DEBUG - Appel de la fonction next_wait()
+22/01/2021 11:55:09 AM - Transport - DEBUG - Utilisation de l'argument 'wait'
+22/01/2021 11:55:09 AM - Transport - DEBUG - Utilisation des arguments -s CORUM T1 -d ODYSSEUM -l 1
+22/01/2021 11:55:09 AM - Transport - DEBUG - Appel de la fonction time_wait()
+22/01/2021 11:55:09 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:55:09 AM - Transport - DEBUG - Conversion de 217 sec en 03 min 37 sec
+22/01/2021 11:55:09 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:55:09 AM - Transport - DEBUG - Conversion de 599 sec en 09 min 59 sec
+22/01/2021 11:55:09 AM - Transport - DEBUG - Appel de la fonction temps_arrive()
+22/01/2021 11:55:09 AM - Transport - DEBUG - Conversion de 1066 sec en 17 min 46 sec
+22/01/2021 11:55:09 AM - Transport - DEBUG - ********************** Fin du script **********************
+22/01/2021 11:56:15 AM - Transport - DEBUG - ********************** Début du script **********************

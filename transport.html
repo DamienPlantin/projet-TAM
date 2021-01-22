@@ -26,12 +26,12 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from time import *
-import logging
+<pre><code class="python">import logging
 import sqlite3
 import argparse
 import sys
 import urllib.request
+import time
 
 
 logger = logging.getLogger(&#39;Transport&#39;)
@@ -53,22 +53,21 @@ logger.addHandler(ch)
 
 
 def temps_arrive(horaire):
-  
-
     &#34;&#34;&#34;Docstring of the function temps_arrive :
-    
-    strftime : allows to convert the variable time, which is in seconds , in minutes and seconds 
+
+    strftime : allows to convert the variable time, which is in seconds ,
+    in minutes and seconds
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction temps_arrive()&#34;)
-    logger.debug(&#34;Conversion de %s sec en %s&#34;, horaire, strftime(&#39;%M min %S sec&#39;, gmtime(horaire)))
-    return strftime(&#39;%M min %S sec&#39;, gmtime(horaire))
+    logger.debug(&#34;Conversion de %s sec en %s&#34;, horaire, time.strftime(&#39;%M min %S sec&#39;, time.gmtime(horaire)))
+    return time.strftime(&#39;%M min %S sec&#39;, time.gmtime(horaire))
 
 
 def download():
-    
-    &#34;&#34;&#34;Docstring of the function download : 
+    &#34;&#34;&#34;Docstring of the function download :
 
-    urllib.request.urlretrieve : allows to upload the given file in the link and to rename it
+    urllib.request.urlretrieve : allows to upload the given file in the link
+    and to rename it
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction download&#34;)
     logger.debug(&#34;Tentative de téléchargement du fichier .csv à l&#39;@ https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv&#34;)
@@ -79,28 +78,28 @@ def download():
 
 
 def clear_rows(cursor):
-   
     &#34;&#34;&#34;Docstring of the function clear_rows :
 
-    This function allows to delete the table which is present in the main table &#39;infoarret&#39;
-    cursor : comande SQL with the library sqlite 3 of python 
+    This function allows to delete the table which is present
+    in the main table &#39;infoarret&#39;
+    cursor : comande SQL with the library sqlite 3 of python
     allows to place in the table &#39;infoarret&#39;
     &#34;&#34;&#34;
-    cursor.execute(&#34;&#34;&#34;DELETE FROM infoarret&#34;&#34;&#34;) # Dans la parenthèse on peut faire une requête SQL
+    cursor.execute(&#34;&#34;&#34;DELETE FROM infoarret&#34;&#34;&#34;)
+    # Dans la parenthèse on peut faire une requête SQL
 
 
 def insert_csv_row(csv_row, cursor):
-    
     &#34;&#34;&#34;Docstring of the function insert_csv_row
 
-    This function allows to insert the informations of the file csv in the table &#39;infoarret&#39;
+    This function allows to insert the informations of the csv file
+    in the table &#39;infoarret&#39;
     &#34;&#34;&#34;
     cursor.execute(&#34;&#34;&#34;INSERT INTO infoarret VALUES (?,?,?,?,?,?,?,?,?,?,?) &#34;&#34;&#34;,
                    csv_row.strip().split(&#34;;&#34;))
 
 
 def load_csv(path, cursor):
-    
     &#34;&#34;&#34;Docstring of the function load_csv
 
     This function allows to upload the file csv in the table &#39;infoarret&#39;
@@ -111,22 +110,22 @@ def load_csv(path, cursor):
     logger.debug(&#34;Appel de la fonction load_csv()&#34;)
     logger.debug(&#34;Tentative d&#39;ouverture du fichier %s&#34;, path)
     with open(path, &#34;r&#34;) as f:
-        # ignore the header (ignorer la première ligne qui correspond au nom des colonnes)
+        # ignorer la première ligne qui correspond au nom des colonnes
         f.readline()            # On lit la première ligne
         line = f.readline()
-        logger.debug(&#34;Ouverture du fichier et lecture de la première ligne réussi&#34;)
+        logger.debug(&#34;Ouverture et lecture de la première ligne du fichier réussi&#34;)
         logger.debug(&#34;Appel de la fonction insert_csv_row() pour chaque ligne du fichier csv&#34;)
-        # loop over the lines in the file (boucle la lecture des lignes tant qu&#39;il y a des lignes dans le fichier csv)
+        # boucle la lecture tant qu&#39;il y a des lignes dans le fichier csv
         while line:
             insert_csv_row(line, cursor)
             line = f.readline()
 
 
 def remove_table(cursor):
-  
     &#34;&#34;&#34;Docstring of the function remove_table
 
-    This function allows to delete the table &#39;infoarret&#39; if one  existe in the data base
+    This function allows to delete the table &#39;infoarret&#39;
+    if one  existe in the data base
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction remove_table()&#34;)
     cursor.execute(&#34;&#34;&#34;DROP TABLE IF EXISTS infoarret&#34;&#34;&#34;)
@@ -134,10 +133,10 @@ def remove_table(cursor):
 
 
 def create_schema(cursor):
-    
     &#34;&#34;&#34;Docstring of the function create_schema
 
-    This function allows to create a table &#39;infoarret&#39; if it doesn&#39;t existe and to allocate the colonnes with their  type 
+    This function allows to create a table &#39;infoarret&#39;
+    if it doesn&#39;t existe and to allocate the colonnes with their  type
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction create_schema()&#34;)
     cursor.execute(&#34;&#34;&#34;CREATE TABLE IF NOT EXISTS &#34;infoarret&#34; (
@@ -157,11 +156,11 @@ def create_schema(cursor):
 
 
 def next_passage(cursor):
-  
-    &#34;&#34;&#34;Docstring of the function next_passage 
+    &#34;&#34;&#34;Docstring of the function next_passage :
 
-    This function allows to informe about the next planned arrives in a given station
-    &#34;&#34;&#34; 
+    This function allows to informe about
+    the next planned arrives in a given station
+    &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction next_passage()&#34;)
     logger.debug(&#34;Selection des colonnes pour le résultat de la recherche&#34;)
     cursor.execute(&#39;SELECT stop_name, route_short_name, trip_headsign, delay_sec FROM infoarret WHERE stop_name = ?&#39;, (args.station,))
@@ -176,17 +175,17 @@ def next_passage(cursor):
 
 
 def next_wait(c):
-    
-    &#34;&#34;&#34;Docstring of the function next_wait
+    &#34;&#34;&#34;Docstring of the function next_wait :
 
-    This function allows to select the function next_passage if the action is next ,
-    or time_wait if the next action is wait 
+    This function allows to select the function next_passage
+    if the action is next ,
+    or time_wait if the next action is wait
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction next_wait()&#34;)
     if not args.action:
         print(&#34;Attention, veuillez précisez next ou wait&#34;)
         logger.warning(&#34;Attention, argument next ou wait manquants&#34;)
-    if args.action ==&#34;next&#34;:
+    if args.action == &#34;next&#34;:
         logger.debug(&#34;Utilisation de l&#39;argument &#39;next&#39;&#34;)
         if args.station:
             logger.debug(&#34;Utilisation de l&#39;argument -s %s pour la station&#34;, args.station)
@@ -196,10 +195,10 @@ def next_wait(c):
             print(&#34;Il manque -s STATION&#34;)
             logger.warning(&#34;Attention, argument -s STATION manquant&#34;)
             return 1
-    if args.action ==&#34;wait&#34;:
+    if args.action == &#34;wait&#34;:
         logger.debug(&#34;Utilisation de l&#39;argument &#39;wait&#39;&#34;)
         if args.station and args.destination and args.ligne:
-            logger.debug(&#34;Utilisation des arguments -s %s -d %s -l %s&#34;, args.station, args.destination ,args.ligne)
+            logger.debug(&#34;Utilisation des arguments -s %s -d %s -l %s&#34;, args.station, args.destination, args.ligne)
             time_wait(c)
             return 1
         else:
@@ -209,10 +208,10 @@ def next_wait(c):
 
 
 def time_wait(cursor):
-    
-    &#34;&#34;&#34;Docstring of the function time_wait
+    &#34;&#34;&#34;Docstring of the function time_wait :
 
-    This function allows to pin up(display) the time waiting in a station ,for a line to a destination 
+    This function allows to pin up(display) the time waiting in a station ,
+    for a line to a destination
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction time_wait()&#34;)
     cursor.execute(f&#34;SELECT stop_name, route_short_name, trip_headsign, delay_sec FROM infoarret WHERE stop_name = ? AND trip_headsign = ? AND route_short_name = ?&#34;, (args.station, args.destination, args.ligne))
@@ -220,43 +219,41 @@ def time_wait(cursor):
         if args.fichier:
             passage = str(f&#34;Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d&#39;attente {temps_arrive(contact[3])}\n&#34;)
             sys.stdout = open(&#39;Terminal.txt&#39;, &#39;a&#39;, encoding=&#39;utf-8&#39;)
-            sys.stdout.write(passage)            
+            sys.stdout.write(passage)
         else:
             print(f&#34;Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d&#39;attente {temps_arrive(contact[3])}&#34;)
             logger.info(f&#34;Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d&#39;attente {temps_arrive(contact[3])}&#34;)
 
 
 parser = argparse.ArgumentParser(&#34;Script to interact with data from the TAM API&#34;)
-parser.add_argument(&#34;-u&#34;, &#34;--update&#34;, help=&#34;mise à jour à partir d&#39;un fichier ou chemin d&#39;accés&#34;)
-parser.add_argument(&#34;-s&#34;,&#34;--station&#34;, help=&#34;next passages to a stop&#34;)
+parser.add_argument(&#34;-u&#34;, &#34;--update&#34;, help=&#34;update database with path file&#34;)
+parser.add_argument(&#34;-s&#34;, &#34;--station&#34;, help=&#34;next passages to a stop&#34;)
 parser.add_argument(&#34;-d&#34;, &#34;--destination&#34;, help=&#34;time to wait&#34;)
 parser.add_argument(&#34;-l&#34;, &#34;--ligne&#34;, help=&#34;time to wait&#34;)
-parser.add_argument(&#34;action&#34;, nargs=&#39;?&#39;, help=&#34;wait time or next passages to a stop&#34;)
+parser.add_argument(&#34;action&#34;, nargs=&#39;?&#39;, help=&#34;wait time or next passages&#34;)
 parser.add_argument(&#34;-f&#34;, &#34;--fichier&#34;, action=&#39;store_true&#39;, help=&#39;test&#39;)
 
 # args = parser.parse_args()
 
+logger.debug(&#34;********************** Début du script **********************&#34;)
 
-logger.debug(&#34;************************************** Début du script ***********************************************************&#34;)
 
 def main():
- 
+    &#34;&#34;&#34;Docstring of the function main :
 
+    This function allows to connect with the data base ,
+    delete the table if it  existe.
+    This function  allows also  to update the data base with a csv file
+    which is present in the device ,
+    also it makes the uploading of this file csv directly from the site of TAM
     &#34;&#34;&#34;
-    Docstring of the function main
-
-    This function allows to connect with the data base ,delete the table if it  existe.
-    This function  allows also  to update the data base with a file csv which is present in the device ,
-     also it makes the uploading of this file csv directly from the site of TAM
-
-    &#34;&#34;&#34;
-    conn = sqlite3.connect(&#34;tam.db&#34;) # Connection entre sqlite et notre fichier db
+    conn = sqlite3.connect(&#34;tam.db&#34;)
+    # Connection entre sqlite et notre fichier db
     logger.debug(&#34;Connection/création du fichier tam.db pour la base de donnée&#34;)
-    c = conn.cursor() #permet de se positionner sur la BdD
+    c = conn.cursor()
+    # permet de se positionner sur la BdD
     logger.debug(&#34;Positionnement d&#39;un curseur dans la base de donnée&#34;)
     remove_table(c)
-    
-
     if not conn:
         print(&#34;Error : could not connect to database {}&#34;.format(&#34;tam.db&#34;))
         logger.warning(&#34;Attention, il n&#39;y as pas de base de donnée&#34;)
@@ -275,10 +272,7 @@ def main():
         conn.commit()
         next_wait(c)
         conn.close()
-
-    
-    
-    logger.debug(&#39;************************************** Fin du script *****************************************************************&#39;)
+    logger.debug(&#39;********************** Fin du script **********************&#39;)
 
 
 if __name__ == &#34;__main__&#34;:
@@ -297,7 +291,8 @@ if __name__ == &#34;__main__&#34;:
 </code></dt>
 <dd>
 <div class="desc"><p>Docstring of the function clear_rows :</p>
-<p>This function allows to delete the table which is present in the main table 'infoarret'
+<p>This function allows to delete the table which is present
+in the main table 'infoarret'
 cursor : comande SQL with the library sqlite 3 of python
 allows to place in the table 'infoarret'</p></div>
 <details class="source">
@@ -305,14 +300,14 @@ allows to place in the table 'infoarret'</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def clear_rows(cursor):
-   
     &#34;&#34;&#34;Docstring of the function clear_rows :
 
-    This function allows to delete the table which is present in the main table &#39;infoarret&#39;
-    cursor : comande SQL with the library sqlite 3 of python 
+    This function allows to delete the table which is present
+    in the main table &#39;infoarret&#39;
+    cursor : comande SQL with the library sqlite 3 of python
     allows to place in the table &#39;infoarret&#39;
     &#34;&#34;&#34;
-    cursor.execute(&#34;&#34;&#34;DELETE FROM infoarret&#34;&#34;&#34;) # Dans la parenthèse on peut faire une requête SQL</code></pre>
+    cursor.execute(&#34;&#34;&#34;DELETE FROM infoarret&#34;&#34;&#34;)</code></pre>
 </details>
 </dd>
 <dt id="transport.create_schema"><code class="name flex">
@@ -320,17 +315,18 @@ allows to place in the table 'infoarret'</p></div>
 </code></dt>
 <dd>
 <div class="desc"><p>Docstring of the function create_schema</p>
-<p>This function allows to create a table 'infoarret' if it doesn't existe and to allocate the colonnes with their
+<p>This function allows to create a table 'infoarret'
+if it doesn't existe and to allocate the colonnes with their
 type</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def create_schema(cursor):
-    
     &#34;&#34;&#34;Docstring of the function create_schema
 
-    This function allows to create a table &#39;infoarret&#39; if it doesn&#39;t existe and to allocate the colonnes with their  type 
+    This function allows to create a table &#39;infoarret&#39;
+    if it doesn&#39;t existe and to allocate the colonnes with their  type
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction create_schema()&#34;)
     cursor.execute(&#34;&#34;&#34;CREATE TABLE IF NOT EXISTS &#34;infoarret&#34; (
@@ -353,17 +349,18 @@ type</p></div>
 <span>def <span class="ident">download</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Docstring of the function download : </p>
-<p>urllib.request.urlretrieve : allows to upload the given file in the link and to rename it</p></div>
+<div class="desc"><p>Docstring of the function download :</p>
+<p>urllib.request.urlretrieve : allows to upload the given file in the link
+and to rename it</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def download():
-    
-    &#34;&#34;&#34;Docstring of the function download : 
+    &#34;&#34;&#34;Docstring of the function download :
 
-    urllib.request.urlretrieve : allows to upload the given file in the link and to rename it
+    urllib.request.urlretrieve : allows to upload the given file in the link
+    and to rename it
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction download&#34;)
     logger.debug(&#34;Tentative de téléchargement du fichier .csv à l&#39;@ https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_TpsReel.csv&#34;)
@@ -378,16 +375,17 @@ type</p></div>
 </code></dt>
 <dd>
 <div class="desc"><p>Docstring of the function insert_csv_row</p>
-<p>This function allows to insert the informations of the file csv in the table 'infoarret'</p></div>
+<p>This function allows to insert the informations of the csv file
+in the table 'infoarret'</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def insert_csv_row(csv_row, cursor):
-    
     &#34;&#34;&#34;Docstring of the function insert_csv_row
 
-    This function allows to insert the informations of the file csv in the table &#39;infoarret&#39;
+    This function allows to insert the informations of the csv file
+    in the table &#39;infoarret&#39;
     &#34;&#34;&#34;
     cursor.execute(&#34;&#34;&#34;INSERT INTO infoarret VALUES (?,?,?,?,?,?,?,?,?,?,?) &#34;&#34;&#34;,
                    csv_row.strip().split(&#34;;&#34;))</code></pre>
@@ -407,7 +405,6 @@ of the access and/or the file csv</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def load_csv(path, cursor):
-    
     &#34;&#34;&#34;Docstring of the function load_csv
 
     This function allows to upload the file csv in the table &#39;infoarret&#39;
@@ -418,12 +415,12 @@ of the access and/or the file csv</p></div>
     logger.debug(&#34;Appel de la fonction load_csv()&#34;)
     logger.debug(&#34;Tentative d&#39;ouverture du fichier %s&#34;, path)
     with open(path, &#34;r&#34;) as f:
-        # ignore the header (ignorer la première ligne qui correspond au nom des colonnes)
+        # ignorer la première ligne qui correspond au nom des colonnes
         f.readline()            # On lit la première ligne
         line = f.readline()
-        logger.debug(&#34;Ouverture du fichier et lecture de la première ligne réussi&#34;)
+        logger.debug(&#34;Ouverture et lecture de la première ligne du fichier réussi&#34;)
         logger.debug(&#34;Appel de la fonction insert_csv_row() pour chaque ligne du fichier csv&#34;)
-        # loop over the lines in the file (boucle la lecture des lignes tant qu&#39;il y a des lignes dans le fichier csv)
+        # boucle la lecture tant qu&#39;il y a des lignes dans le fichier csv
         while line:
             insert_csv_row(line, cursor)
             line = f.readline()</code></pre>
@@ -433,35 +430,35 @@ of the access and/or the file csv</p></div>
 <span>def <span class="ident">main</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Docstring of the function main</p>
-<p>This function allows to connect with the data base ,delete the table if it
+<div class="desc"><p>Docstring of the function main :</p>
+<p>This function allows to connect with the data base ,
+delete the table if it
 existe.
 This function
 allows also
-to update the data base with a file csv which is present in the device ,
+to update the data base with a csv file
+which is present in the device ,
 also it makes the uploading of this file csv directly from the site of TAM</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def main():
- 
+    &#34;&#34;&#34;Docstring of the function main :
 
+    This function allows to connect with the data base ,
+    delete the table if it  existe.
+    This function  allows also  to update the data base with a csv file
+    which is present in the device ,
+    also it makes the uploading of this file csv directly from the site of TAM
     &#34;&#34;&#34;
-    Docstring of the function main
-
-    This function allows to connect with the data base ,delete the table if it  existe.
-    This function  allows also  to update the data base with a file csv which is present in the device ,
-     also it makes the uploading of this file csv directly from the site of TAM
-
-    &#34;&#34;&#34;
-    conn = sqlite3.connect(&#34;tam.db&#34;) # Connection entre sqlite et notre fichier db
+    conn = sqlite3.connect(&#34;tam.db&#34;)
+    # Connection entre sqlite et notre fichier db
     logger.debug(&#34;Connection/création du fichier tam.db pour la base de donnée&#34;)
-    c = conn.cursor() #permet de se positionner sur la BdD
+    c = conn.cursor()
+    # permet de se positionner sur la BdD
     logger.debug(&#34;Positionnement d&#39;un curseur dans la base de donnée&#34;)
     remove_table(c)
-    
-
     if not conn:
         print(&#34;Error : could not connect to database {}&#34;.format(&#34;tam.db&#34;))
         logger.warning(&#34;Attention, il n&#39;y as pas de base de donnée&#34;)
@@ -480,28 +477,26 @@ also it makes the uploading of this file csv directly from the site of TAM</p></
         conn.commit()
         next_wait(c)
         conn.close()
-
-    
-    
-    logger.debug(&#39;************************************** Fin du script *****************************************************************&#39;)</code></pre>
+    logger.debug(&#39;********************** Fin du script **********************&#39;)</code></pre>
 </details>
 </dd>
 <dt id="transport.next_passage"><code class="name flex">
 <span>def <span class="ident">next_passage</span></span>(<span>cursor)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Docstring of the function next_passage </p>
-<p>This function allows to informe about the next planned arrives in a given station</p></div>
+<div class="desc"><p>Docstring of the function next_passage :</p>
+<p>This function allows to informe about
+the next planned arrives in a given station</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def next_passage(cursor):
-  
-    &#34;&#34;&#34;Docstring of the function next_passage 
+    &#34;&#34;&#34;Docstring of the function next_passage :
 
-    This function allows to informe about the next planned arrives in a given station
-    &#34;&#34;&#34; 
+    This function allows to informe about
+    the next planned arrives in a given station
+    &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction next_passage()&#34;)
     logger.debug(&#34;Selection des colonnes pour le résultat de la recherche&#34;)
     cursor.execute(&#39;SELECT stop_name, route_short_name, trip_headsign, delay_sec FROM infoarret WHERE stop_name = ?&#39;, (args.station,))
@@ -519,25 +514,26 @@ also it makes the uploading of this file csv directly from the site of TAM</p></
 <span>def <span class="ident">next_wait</span></span>(<span>c)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Docstring of the function next_wait</p>
-<p>This function allows to select the function next_passage if the action is next ,
+<div class="desc"><p>Docstring of the function next_wait :</p>
+<p>This function allows to select the function next_passage
+if the action is next ,
 or time_wait if the next action is wait</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def next_wait(c):
-    
-    &#34;&#34;&#34;Docstring of the function next_wait
+    &#34;&#34;&#34;Docstring of the function next_wait :
 
-    This function allows to select the function next_passage if the action is next ,
-    or time_wait if the next action is wait 
+    This function allows to select the function next_passage
+    if the action is next ,
+    or time_wait if the next action is wait
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction next_wait()&#34;)
     if not args.action:
         print(&#34;Attention, veuillez précisez next ou wait&#34;)
         logger.warning(&#34;Attention, argument next ou wait manquants&#34;)
-    if args.action ==&#34;next&#34;:
+    if args.action == &#34;next&#34;:
         logger.debug(&#34;Utilisation de l&#39;argument &#39;next&#39;&#34;)
         if args.station:
             logger.debug(&#34;Utilisation de l&#39;argument -s %s pour la station&#34;, args.station)
@@ -547,10 +543,10 @@ or time_wait if the next action is wait</p></div>
             print(&#34;Il manque -s STATION&#34;)
             logger.warning(&#34;Attention, argument -s STATION manquant&#34;)
             return 1
-    if args.action ==&#34;wait&#34;:
+    if args.action == &#34;wait&#34;:
         logger.debug(&#34;Utilisation de l&#39;argument &#39;wait&#39;&#34;)
         if args.station and args.destination and args.ligne:
-            logger.debug(&#34;Utilisation des arguments -s %s -d %s -l %s&#34;, args.station, args.destination ,args.ligne)
+            logger.debug(&#34;Utilisation des arguments -s %s -d %s -l %s&#34;, args.station, args.destination, args.ligne)
             time_wait(c)
             return 1
         else:
@@ -564,17 +560,18 @@ or time_wait if the next action is wait</p></div>
 </code></dt>
 <dd>
 <div class="desc"><p>Docstring of the function remove_table</p>
-<p>This function allows to delete the table 'infoarret' if one
+<p>This function allows to delete the table 'infoarret'
+if one
 existe in the data base</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def remove_table(cursor):
-  
     &#34;&#34;&#34;Docstring of the function remove_table
 
-    This function allows to delete the table &#39;infoarret&#39; if one  existe in the data base
+    This function allows to delete the table &#39;infoarret&#39;
+    if one  existe in the data base
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction remove_table()&#34;)
     cursor.execute(&#34;&#34;&#34;DROP TABLE IF EXISTS infoarret&#34;&#34;&#34;)
@@ -586,38 +583,39 @@ existe in the data base</p></div>
 </code></dt>
 <dd>
 <div class="desc"><p>Docstring of the function temps_arrive :</p>
-<p>strftime : allows to convert the variable time, which is in seconds , in minutes and seconds</p></div>
+<p>strftime : allows to convert the variable time, which is in seconds ,
+in minutes and seconds</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def temps_arrive(horaire):
-  
-
     &#34;&#34;&#34;Docstring of the function temps_arrive :
-    
-    strftime : allows to convert the variable time, which is in seconds , in minutes and seconds 
+
+    strftime : allows to convert the variable time, which is in seconds ,
+    in minutes and seconds
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction temps_arrive()&#34;)
-    logger.debug(&#34;Conversion de %s sec en %s&#34;, horaire, strftime(&#39;%M min %S sec&#39;, gmtime(horaire)))
-    return strftime(&#39;%M min %S sec&#39;, gmtime(horaire))</code></pre>
+    logger.debug(&#34;Conversion de %s sec en %s&#34;, horaire, time.strftime(&#39;%M min %S sec&#39;, time.gmtime(horaire)))
+    return time.strftime(&#39;%M min %S sec&#39;, time.gmtime(horaire))</code></pre>
 </details>
 </dd>
 <dt id="transport.time_wait"><code class="name flex">
 <span>def <span class="ident">time_wait</span></span>(<span>cursor)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Docstring of the function time_wait</p>
-<p>This function allows to pin up(display) the time waiting in a station ,for a line to a destination</p></div>
+<div class="desc"><p>Docstring of the function time_wait :</p>
+<p>This function allows to pin up(display) the time waiting in a station ,
+for a line to a destination</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def time_wait(cursor):
-    
-    &#34;&#34;&#34;Docstring of the function time_wait
+    &#34;&#34;&#34;Docstring of the function time_wait :
 
-    This function allows to pin up(display) the time waiting in a station ,for a line to a destination 
+    This function allows to pin up(display) the time waiting in a station ,
+    for a line to a destination
     &#34;&#34;&#34;
     logger.debug(&#34;Appel de la fonction time_wait()&#34;)
     cursor.execute(f&#34;SELECT stop_name, route_short_name, trip_headsign, delay_sec FROM infoarret WHERE stop_name = ? AND trip_headsign = ? AND route_short_name = ?&#34;, (args.station, args.destination, args.ligne))
@@ -625,7 +623,7 @@ existe in the data base</p></div>
         if args.fichier:
             passage = str(f&#34;Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d&#39;attente {temps_arrive(contact[3])}\n&#34;)
             sys.stdout = open(&#39;Terminal.txt&#39;, &#39;a&#39;, encoding=&#39;utf-8&#39;)
-            sys.stdout.write(passage)            
+            sys.stdout.write(passage)
         else:
             print(f&#34;Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d&#39;attente {temps_arrive(contact[3])}&#34;)
             logger.info(f&#34;Arrêt {contact[0]} Ligne {contact[1]} Destination {contact[2]} Temps d&#39;attente {temps_arrive(contact[3])}&#34;)</code></pre>
