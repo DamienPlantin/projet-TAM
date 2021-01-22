@@ -10,16 +10,16 @@ Une documentation est disponible au format html.
 
 Les principales fonctionnalités de ce programme sont:
 
--Télécharger le fichier.csv de la tam en database
--Update la database si le fichier est déjà telechargé
--Afficher tous les prochains passages des transports à la station toutes lignes et destinations confondues
--Afficher le délai d'attente du prochain transport avec les paramètres entrés avec les arguments dans la ligne de commande
--Enregistrer les résultats de vos recherches dans un fichier.txt avec un argument
+-télécharger le fichier.csv de la tam en database
+-update la database si le fichier est déjà telechargé
+-afficher tous les prochains passages des transports à la station toutes lignes et destinations confondues
+-afficher le délai d'attente du prochain transport avec les paramètres entrés avec les arguments dans la ligne de commande
+-enregistrer les résultats de vos recherches dans un fichier.txt avec un argument
 
 Fonctionnalités spécifiques:
 
--Si aucun argument n'est spécifié, le fichier est téléchargé automatiquement et mis à jour dans la base de donnée.
-Si l'argument update est préciser la mise à jour de la base de données se fera avec un fichier renseigné.
+-si aucun argument n'est spécifié, le fichier est téléchargé automatiquement et mis à jour dans la base de donnée
+si l'argument update est préciser la mise à jour de la base de données se fera avec un fichier renseigné.
 
 -l'argument -s (args.station) permet d'afficher les prochains passages à la station toutes lignes et destinations confondues. 
 les infos renvoyées seront enregistrées dans un fichier txt si l'argument (-f) est spécifié.
