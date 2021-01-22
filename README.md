@@ -1,4 +1,4 @@
-# projet-TAM
+# Projet-TAM
 
 Ce programme permet d'utiliser plusieurs fonctions dans une ligne de commande pour interagir avec le fichier.csv des horaires de la tam.
 Pour utiliser ce programme, le client doit avoir installer python au préalable.
